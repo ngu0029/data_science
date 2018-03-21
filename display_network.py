@@ -31,7 +31,7 @@ def display_network(A, m = -1, n = -1):
         m = np.ceil(col / n)
         
     # Initialization of the image
-    image = np.ones(shape=(buf + m * (sz + buf), buf + n * (sz + buf))) # Using np.ones to make white boundary btw digits
+    image = np.ones(shape=(buf + m * (sz + buf), buf + n * (sz + buf))) # Using np.ones to make white border btw digits
 
     if not opt_graycolor:
         image *= 0.1
