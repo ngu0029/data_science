@@ -8,7 +8,7 @@ import numpy as np
 np.random.seed(2)
 
 X = np.random.rand(1000, 1)
-y = 4 + 3*X + .2*np.random.randn(1000, 1) # noise added
+y = 4 + 3*X + .2*np.random.randn(1000, 1) # Gaussian noise added
 
 # Building Xbar
 one = np.ones((X.shape[0],1))
@@ -16,7 +16,7 @@ Xbar = np.concatenate((one, X), axis = 1)
 
 """ gradient of loss function of Linear Regression using formula """
 """ Gradient of a scalar function over a vector is A VECTOR WITH THE SAME SIZE """
-def grad(w):
+def grad(w):  # called Batch Gradient Descent because of using all data points to compute grad
     N = Xbar.shape[0]
     h = 1/N * Xbar.T.dot(Xbar.dot(w) - y)
     #print("h = ", h)
@@ -56,7 +56,7 @@ print('Checking gradient...', check_grad(w_rand1, cost, grad))
 def myGD(w_init, grad, eta):
     w = [w_init]
     for it in range(100):
-        w_new = w[-1] -eta*grad(w[-1])
+        w_new = w[-1] -eta*grad(w[-1])  # computing grad requires all data points
         if np.linalg.norm(grad(w_new))/len(w_new) < 1e-3:
             break
         w.append(w_new)
