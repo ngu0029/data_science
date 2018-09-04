@@ -37,9 +37,9 @@ def read_data(data_fn, label_fn):
     
     for i, line in enumerate(content): 
         a = line.split(' ')
-        dat[i, :] = np.array([int(a[0]), int(a[1]), int(a[2])])
+        dat[i, :] = np.array([int(a[0]), int(a[1]), int(a[2])]) # email_num, word_num, word_count
     
-    # remember to -1 at coordinate since we're in Python
+    # remember to -1 at coordinate since we're in Python for email_num and word_num
     # check this: https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html
     # for more information about coo_matrix function 
     data = coo_matrix((dat[:, 2], (dat[:, 0] - 1, dat[:, 1] - 1)),\
